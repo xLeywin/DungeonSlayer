@@ -8,7 +8,6 @@ QPushButton {
     border: 2px solid white;
     border-radius: 0px;
     padding: 6px;
-    font-family: Fixedsys;
 }
 
 QPushButton {
@@ -17,7 +16,6 @@ QPushButton {
     border: 2px solid white;
     border-radius: 0px;
     padding: 6px;
-    font-family: Fixedsys;
 }
 
 QComboBox {
@@ -26,7 +24,6 @@ QComboBox {
     border: 2px solid white;
     border-radius: 0px;
     padding: 6px;
-    font-family: Fixedsys;
 }
 
 QPushButton:hover {
