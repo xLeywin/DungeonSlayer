@@ -1,22 +1,29 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QStackedWidget
 from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QFont, QFontDatabase, QIcon
+
+from screens.menu import Menu
+from screens.character_creation import CharacterCreation
+from screens.game import Game
 
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
 
+    ## Load font
     font_path = "styles/PressStart2P-Regular.ttf"
     font_id = QFontDatabase.addApplicationFont(font_path)
+
     if font_id != -1:
         family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        app.setFont(QFont(family, 8)) # Define as default font
+        app.setFont(QFont(family, 8))
     else:
-        print("Erro: Arquivo de fonte não encontrado.")
+        print("Error: Font file not found.")
 
+    ## Load UI
     ui_file = QFile("ui/game_window.ui")
     ui_file.open(QFile.ReadOnly)
 
@@ -24,30 +31,21 @@ if __name__ == "__main__":
     window = loader.load(ui_file)
     ui_file.close()
 
+    ## Load icon
     window.setWindowIcon(QIcon("assets/icon.png"))
     window.setFixedSize(400, 520)
 
+    ## Load style
     with open("styles/dark_theme.css", "r") as f:
         window.setStyleSheet(f.read())
 
-    # get the stackedWidget
-    stack = window.findChild(QWidget, "stackedWidget")
+    ## stackedWidget
+    stack = window.findChild(QStackedWidget, "stackedWidget")
 
-    # character page buttons
-    # confirm_button = window.findChild(QWidget, "ConfirmButton")
-
-    # Menu
-    start_button = window.findChild(QWidget, "StartButton")
-    exit_button = window.findChild(QWidget, "ExitButton")
-
-    start_button.clicked.connect(lambda: stack.setCurrentIndex(1)) # go to character edit screen (1)
-    exit_button.clicked.connect(app.quit)
-
-    # Character Edit
-    # confirm_button.clicked.connect(lambda: stack.setCurrentIndex(2))
-    
-    back_button = window.findChild(QWidget, "BackButton")
-    back_button.clicked.connect(lambda: stack.setCurrentIndex(0))
+    ## Load screens
+    menu = Menu(window, stack)
+    character = CharacterCreation(window, stack)
+    game = Game(window, stack)
 
     window.show()
     app.exec()

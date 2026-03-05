@@ -38,7 +38,7 @@
       <height>500</height>
      </rect>
     </property>
-    <widget class="QWidget" name="main_menu">
+    <widget class="QWidget" name="menu">
      <widget class="QWidget" name="horizontalLayoutWidget_4">
       <property name="geometry">
        <rect>
@@ -191,7 +191,7 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="character_edit">
+    <widget class="QWidget" name="character_creation">
      <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
@@ -1193,6 +1193,21 @@
         </item>
        </layout>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="game">
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>150</y>
+        <width>81</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nada</string>
+      </property>
      </widget>
     </widget>
    </widget>
