@@ -33,3 +33,44 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: #222222;
 }
+
+/* Container Principal do Log */
+QScrollArea#ScrollArea {
+    background-color: black;
+    border: 2px solid white;
+}
+
+/* Widget interno que segura os Labels */
+QWidget#EventList {
+    background-color: black;
+}
+
+/* Labels de Log */
+QWidget#EventList QLabel {
+    color: white;
+    font-family: 'Consolas', 'Monospace';
+    font-size: 11px;
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+}
+
+/* Garante que a calha da barra seja visível no fundo preto */
+QScrollBar:vertical {
+    border: 1px solid white;
+    background: black;
+    width: 14px;
+    margin: 0px;
+}
+
+/* O 'cursor' que você arrasta */
+QScrollBar::handle:vertical {
+    background: white;
+    min-height: 20px;
+    border-radius: 0px;
+}
+
+/* Remove as setas de cima/baixo para um visual mais limpo */
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
